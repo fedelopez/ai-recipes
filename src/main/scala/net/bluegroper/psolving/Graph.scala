@@ -14,7 +14,6 @@ case class Graph(nodes: List[Node], edges: List[Edge]) {
     edges.find((edge: Edge) => (edge.nodeA == a && edge.nodeB == b) || (edge.nodeA == b && edge.nodeB == a)).nonEmpty
   }
 
-
   def neighbors(a: Node): List[Node] = ???
 
 }

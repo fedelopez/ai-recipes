@@ -4,7 +4,6 @@ import scala.io.Source
 import java.util.ArrayList
 import scala.collection.immutable.TreeSet
 
-//import java.util
 import scala.collection.JavaConversions._
 
 /**

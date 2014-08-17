@@ -18,6 +18,7 @@ class GraphTest extends FunSuite {
     val nodeE = new Node("d", 1, 1)
 
     val graph: Graph = new Graph(List(nodeA, nodeB, nodeC), List(new Edge(nodeA, nodeC), new Edge(nodeB, nodeC)))
+    val graph2: Graph = new Graph(List(nodeA, nodeB, nodeC, nodeD), List(new Edge(nodeA, nodeC), new Edge(nodeA, nodeD)))
   }
 
   test("adjacent") {
@@ -30,6 +31,16 @@ class GraphTest extends FunSuite {
 
       assert(graph.adjacent(nodeB, nodeC) === true)
       assert(graph.adjacent(nodeC, nodeB) === true)
+    }
+  }
+
+  //todo
+  test("neighbors") {
+    new TestSets {
+      val actual: List[Node] = graph2.neighbors(nodeA)
+      assert(actual.size === 2)
+      assert(actual.contains(nodeC))
+      assert(actual.contains(nodeD))
     }
   }
 

@@ -5,7 +5,7 @@ package net.bluegroper.psolving
  */
 
 import swing._
-import java.awt.{RenderingHints, Color}
+import java.awt.RenderingHints
 import scala.swing.Color
 import scala.io.Source
 
