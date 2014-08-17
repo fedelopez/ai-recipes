@@ -37,10 +37,20 @@ class GraphTest extends FunSuite {
   //todo
   test("neighbors") {
     new TestSets {
-      val actual: List[Node] = graph2.neighbors(nodeA)
-      assert(actual.size === 2)
-      assert(actual.contains(nodeC))
-      assert(actual.contains(nodeD))
+      val actualForA: List[Node] = graph2.neighbors(nodeA)
+      assert(actualForA.size === 2)
+      assert(actualForA.contains(nodeC))
+      assert(actualForA.contains(nodeD))
+
+      val actualForC: List[Node] = graph2.neighbors(nodeC)
+      assert(actualForC.size === 1)
+      assert(actualForC.contains(nodeA))
+
+      val actualForD: List[Node] = graph2.neighbors(nodeD)
+      assert(actualForD.size === 1)
+      assert(actualForD.contains(nodeA))
+
+      assert(graph2.neighbors(nodeB).size === 0)
     }
   }
 
