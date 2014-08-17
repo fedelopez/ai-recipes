@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.scalatest:scalatest_2.10:2.0.M5b">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.10/2.0.M5b/scalatest_2.10-2.0.M5b.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.10/2.0.M5b/scalatest_2.10-2.0.M5b-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.10/2.0.M5b/scalatest_2.10-2.0.M5b-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
