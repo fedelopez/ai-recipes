@@ -9,7 +9,13 @@
         "name": "Petersham",
         "x": 1,
         "y": 1,
-        "neighbors": ["Croydon", "Newtown", "Syd Airport"]
+        "neighbors": ["Croydon", "Newtown", "Marrickville"]
+    },
+    {
+        "name": "Marrickville",
+        "x": 1,
+        "y": 2,
+        "neighbors": ["Petersham", "Alexandria", "Tempe", "Syd Airport"]
     },
     {
         "name": "Newtown",
@@ -33,7 +39,7 @@
         "name": "Alexandria",
         "x": 3,
         "y": 2,
-        "neighbors": ["Surry Hills", "Newtown", "Kensington", "Kingsford", "Mascot"]
+        "neighbors": ["Surry Hills", "Marrickville", "Newtown", "Kensington", "Kingsford", "Mascot"]
     },
     {
         "name": "Kensington",
@@ -78,9 +84,15 @@
         "neighbors": ["Maroubra", "Alexandria", "Syd Airport"]
     },
     {
+        "name": "Tempe",
+        "x": 1,
+        "y": 5,
+        "neighbors": ["Syd Airport", "Marrickville"]
+    },
+    {
         "name": "Syd Airport",
         "x": 2,
         "y": 6,
-        "neighbors": ["Mascot", "Petersham"]
+        "neighbors": ["Mascot", "Marrickville"]
     }
 ]

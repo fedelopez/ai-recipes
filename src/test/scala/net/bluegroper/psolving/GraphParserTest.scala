@@ -33,8 +33,8 @@ class GraphParserTest extends FunSuite {
     new TestSets {
       val actual: Graph = parse(source)
 
-      assert(actual.nodes.length === 14)
-      assert(actual.edges.length === 22)
+      assert(actual.nodes.length === 16)
+      assert(actual.edges.length === 26)
 
     }
   }
