@@ -19,7 +19,7 @@ case class Graph(nodes: List[Node], edges: List[Edge]) {
       if (edge.nodeA == a) edge.nodeB
       else if (edge.nodeB == a) edge.nodeA
       else null
-    })
+    }).filter((node: Node) => node != null)
   }
 
 }

@@ -12,7 +12,7 @@
         "neighbors": ["Croydon", "Newtown", "Syd Airport"]
     },
     {
-        "name": "Newton",
+        "name": "Newtown",
         "x": 2,
         "y": 1,
         "neighbors": ["Petersham", "CBD", "Surry Hills", "Alexandria"]
@@ -21,7 +21,7 @@
         "name": "CBD",
         "x": 3,
         "y": 0,
-        "neighbors": ["Newton", "Surry Hills", "Bondi Junction"]
+        "neighbors": ["Newtown", "Surry Hills", "Bondi Junction"]
     },
     {
         "name": "Surry Hills",
@@ -30,19 +30,13 @@
         "neighbors": ["CBD", "Newtown", "Bondi Junction", "Kensington", "Alexandria"]
     },
     {
-        "name": "Bondi Junction",
-        "x": 5,
-        "y": 1,
-        "neighbors": ["Surry Hills", "CBD", "Kensington", "Tamarama"]
-    },
-    {
         "name": "Alexandria",
         "x": 3,
         "y": 2,
-        "neighbors": ["Surry Hills", "Newtown", "Kengsington", "Kingsford", "Mascot"]
+        "neighbors": ["Surry Hills", "Newtown", "Kensington", "Kingsford", "Mascot"]
     },
     {
-        "name": "Kengsington",
+        "name": "Kensington",
         "x": 4,
         "y": 2,
         "neighbors": ["Surry Hills", "Alexandria", "Bondi Junction", "Kingsford"]
@@ -51,7 +45,7 @@
         "name": "Kingsford",
         "x": 4,
         "y": 3,
-        "neighbors": ["Alexandria", "Kengsington", "Maroubra"]
+        "neighbors": ["Alexandria", "Kensington", "Maroubra"]
     },
     {
         "name": "Bondi Junction",

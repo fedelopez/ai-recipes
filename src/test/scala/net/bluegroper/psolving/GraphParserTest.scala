@@ -4,6 +4,7 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.FunSuite
 import net.bluegroper.psolving.GraphParser.parse
+import net.bluegroper.psolving.GraphParser.source
 
 /**
  * @author fede
@@ -19,13 +20,22 @@ class GraphParserTest extends FunSuite {
   test("parse") {
 
     new TestSets {
-
       val json: String = "[{\"name\":\"Croydon\",\"x\": 1,\"y\": 2,\"neighbors\":[\"Petersham\"]},{\"name\":\"Petersham\",\"x\": 1,\"y\": 3,\"neighbors\":[\"Croydon\"]}]"
-
       val actual: Graph = parse(json)
 
       assert(actual.edges.length === 1)
       assert(actual.adjacent(croydon, petersham) === true)
+    }
+  }
+
+  test("parse source") {
+
+    new TestSets {
+      val actual: Graph = parse(source)
+
+      assert(actual.nodes.length === 14)
+      assert(actual.edges.length === 22)
+
     }
   }
 

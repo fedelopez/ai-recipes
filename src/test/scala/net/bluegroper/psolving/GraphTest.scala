@@ -18,7 +18,6 @@ class GraphTest extends FunSuite {
     val nodeE = new Node("d", 1, 1)
 
     val graph: Graph = new Graph(List(nodeA, nodeB, nodeC), List(new Edge(nodeA, nodeC), new Edge(nodeB, nodeC)))
-    val graph2: Graph = new Graph(List(nodeA, nodeB, nodeC, nodeD), List(new Edge(nodeA, nodeC), new Edge(nodeA, nodeD)))
   }
 
   test("adjacent") {
@@ -34,23 +33,31 @@ class GraphTest extends FunSuite {
     }
   }
 
-  //todo
-  test("neighbors") {
+  test("neighbors: no elements") {
     new TestSets {
-      val actualForA: List[Node] = graph2.neighbors(nodeA)
-      assert(actualForA.size === 2)
+      val actualForA: List[Node] = graph.neighbors(nodeD)
+      assert(actualForA.size === 0)
+    }
+  }
+
+  test("neighbors: one element") {
+    new TestSets {
+      val actualForA: List[Node] = graph.neighbors(nodeA)
+      assert(actualForA.size === 1)
       assert(actualForA.contains(nodeC))
-      assert(actualForA.contains(nodeD))
 
-      val actualForC: List[Node] = graph2.neighbors(nodeC)
-      assert(actualForC.size === 1)
+      val actualForB: List[Node] = graph.neighbors(nodeB)
+      assert(actualForB.size === 1)
+      assert(actualForB.contains(nodeC))
+    }
+  }
+
+  test("neighbors: two elements") {
+    new TestSets {
+      val actualForC: List[Node] = graph.neighbors(nodeC)
+      assert(actualForC.size === 2)
       assert(actualForC.contains(nodeA))
-
-      val actualForD: List[Node] = graph2.neighbors(nodeD)
-      assert(actualForD.size === 1)
-      assert(actualForD.contains(nodeA))
-
-      assert(graph2.neighbors(nodeB).size === 0)
+      assert(actualForC.contains(nodeB))
     }
   }
 

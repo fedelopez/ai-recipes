@@ -2,7 +2,6 @@ package net.bluegroper.psolving
 
 import scala.io.Source
 import java.util.ArrayList
-import scala.collection.immutable.TreeSet
 
 import scala.collection.JavaConversions._
 
@@ -11,26 +10,13 @@ import scala.collection.JavaConversions._
  */
 object GraphParser {
 
-  val source = Source.fromFile(getClass.getResource("layout.json").getFile).mkString
+  lazy val source = Source.fromFile(getClass.getResource("layout.json").getFile).mkString
 
   def parse(json: String): Graph = {
     val res: List[Node] = com.codahale.jerkson.Json.parse[List[Node]](json)
     val jsonAsMap = com.codahale.jerkson.Json.parse[List[Map[String, Any]]](json)
-
     val allEdges: List[Edge] = edges(res, jsonAsMap, List())
-
-    implicit val ord = new Ordering[Edge] {
-      def compare(e1: Edge, e2: Edge) = {
-        if ((e1.nodeA.name.equals(e2.nodeA.name) && e1.nodeB.name.equals(e2.nodeB.name)) || (e1.nodeA.name.equals(e2.nodeB.name) && e1.nodeB.name.equals(e2.nodeA.name))) 0
-        else {
-          if (e1.nodeA.name.equals(e2.nodeA.name)) e1.nodeB.name.compareTo(e2.nodeB.name)
-          else e1.nodeA.name.compareTo(e2.nodeA.name)
-        }
-      }
-    }
-
-    val noDuplicates: TreeSet[Edge] = TreeSet()(ord) ++ allEdges
-    new Graph(res, noDuplicates.toList)
+    new Graph(res, GraphUtil.removeDuplicates(allEdges))
   }
 
   def edges(nodes: List[Node], jsonMap: List[Map[String, Any]], acc: List[Edge]): List[Edge] = {
