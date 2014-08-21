@@ -75,5 +75,14 @@ class GraphTest extends FunSuite {
     }
   }
 
+  test("breadthFirstSearch: C to A") {
+    new TestSets {
+      val res: List[Node] = g.breadthFirstSearch(nC, nA)
+      assert(res.length === 2)
+      assert(res(0) === nC)
+      assert(res(1) === nA)
+    }
+  }
+
 
 }
