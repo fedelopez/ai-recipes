@@ -21,7 +21,7 @@ class GraphTest extends FunSuite {
     val nH = new Node("h", 7, 0)
 
     val g: Graph = new Graph(List(nA, nB, nC), List(new Edge(nA, nC), new Edge(nB, nC)))
-    val gB: Graph = new Graph(List(nA, nB, nC, nD, nE, nF, nG), List(new Edge(nA, nH), new Edge(nA, nC), new Edge(nC, nB), new Edge(nC, nD), new Edge(nD, nE), new Edge(nE, nF), new Edge(nB, nG)))
+    val g2: Graph = new Graph(List(nA, nB, nC, nD, nE, nF, nG), List(new Edge(nA, nH), new Edge(nA, nC), new Edge(nC, nB), new Edge(nC, nD), new Edge(nD, nE), new Edge(nE, nF), new Edge(nB, nG)))
   }
 
   test("adjacent") {
@@ -81,6 +81,28 @@ class GraphTest extends FunSuite {
       assert(res.length === 2)
       assert(res(0) === nC)
       assert(res(1) === nA)
+    }
+  }
+
+  test("breadthFirstSearch graph2: B to A") {
+    new TestSets {
+      val res: List[Node] = g2.breadthFirstSearch(nB, nA)
+      assert(res.length === 3)
+      assert(res(0) === nB)
+      assert(res(1) === nC)
+      assert(res(2) === nA)
+    }
+  }
+
+  test("breadthFirstSearch graph2: A to F") {
+    new TestSets {
+      val res: List[Node] = g2.breadthFirstSearch(nA, nF)
+      assert(res.length === 5)
+      assert(res(0) === nA)
+      assert(res(1) === nC)
+      assert(res(2) === nD)
+      assert(res(3) === nE)
+      assert(res(4) === nF)
     }
   }
 
