@@ -25,7 +25,7 @@ case class Graph(nodes: List[Node], edges: List[Edge]) {
   def breadthFirstSearch(initial: Node, goal: Node): List[Node] = {
 
     def doIt(visited: List[Node], frontier: List[List[Node]]): List[Node] = {
-      if (frontier.isEmpty) throw new IllegalStateException("No solution")
+      if (frontier.isEmpty) throw new IllegalStateException("No solution: empty frontier")
       else {
         val path: List[Node] = frontier.head
         val lastNode: Node = path.reverse.head
