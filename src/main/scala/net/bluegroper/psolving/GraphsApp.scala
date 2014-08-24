@@ -15,6 +15,8 @@ object GraphsApp extends SimpleSwingApplication {
   val frameWidth = 700
   val frameHeight = 800
 
+  val blue = new Color(0, 102, 153)
+
   val selectedNodes: scala.collection.mutable.ArrayBuffer[Node] = new scala.collection.mutable.ArrayBuffer[Node]()
   val path: scala.collection.mutable.ArrayBuffer[Node] = new scala.collection.mutable.ArrayBuffer[Node]()
 
@@ -42,7 +44,7 @@ object GraphsApp extends SimpleSwingApplication {
         case e: MouseClicked =>
           val res: Option[Node] = graph.nodes.find((node: Node) => nodeRect(node).contains(e.point))
           if (res.nonEmpty) {
-            println(s"Node ${res.get.name} clicked!!")
+            println(s"Node ${res.get.name} selected")
             selectedNodes.append(res.get)
             if (selectedNodes.size > 2) {
               selectedNodes.remove(0)
@@ -59,14 +61,20 @@ object GraphsApp extends SimpleSwingApplication {
   }
 
   def drawNode(n: Node, g: Graphics2D) = {
-    if (selectedNodes.contains(n)) g.setColor(new Color(0, 102, 153))
+    if (selectedNodes.contains(n)) g.setColor(blue)
     else g.setColor(Color.lightGray)
 
     val rect = nodeRect(n)
 
     g.fillArc(rect.x, rect.y, rect.width, rect.height, 0, 360)
 
-    g.setColor(Color.darkGray)
+    if (path.contains(n)) {
+      g.setColor(blue)
+      g.setStroke(new BasicStroke(2))
+    } else {
+      g.setColor(Color.darkGray)
+      g.setStroke(new BasicStroke())
+    }
     g.drawArc(rect.x, rect.y, rect.width, rect.height, 0, 360)
 
     val width = g.getFontMetrics.stringWidth(n.name)
@@ -83,7 +91,7 @@ object GraphsApp extends SimpleSwingApplication {
     val nodeB_y: Int = (e.nodeB.y * xs) + (xs + xs / 4) / 2
 
     if (path.contains(e.nodeA) && path.contains(e.nodeB)) {
-      g.setColor(new Color(0, 102, 153))
+      g.setColor(blue)
       g.setStroke(new BasicStroke(2))
     } else {
       g.setColor(Color.lightGray)
