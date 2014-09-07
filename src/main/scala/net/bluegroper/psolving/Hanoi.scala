@@ -7,8 +7,6 @@ package net.bluegroper.psolving
  */
 trait Hanoi {
 
-  type Steps = List[String]
-
   def hanoi(initial: State, goal: State): List[State] = {
 
     def doMoveDisks(visited: List[State], frontier: List[List[State]]): List[State] = {
