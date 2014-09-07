@@ -1,10 +1,7 @@
 package net.bluegroper.psolving
 
 /**
- * Generic solution to the classic Towers of Hanoi problem, where the challenge is to move all the disks from the leftmost
- * of three pegs to the rightmost, with two restrictions:
- * You can only take the topmost disk off of one peg and place it on top of all of the disks on another peg - inserting or removing in the middle and at the bottom is not allowed.
- * No disk can ever lie on top of a larger disk.
+ * Generic solution to the classic Towers of Hanoi problem.
  *
  * @author fede
  */
