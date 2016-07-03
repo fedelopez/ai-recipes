@@ -1,4 +1,4 @@
-package net.bluegroper.psolving
+package cat.pseudocodi.psolving.hanoi
 
 /**
  * Generic solution to the classic Towers of Hanoi problem.

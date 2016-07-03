@@ -1,11 +1,12 @@
-package net.bluegroper.psolving
+package cat.pseudocodi.psolving.graphs
 
 /**
  * @author fede
  */
 
-import swing._
 import java.awt.{BasicStroke, Color, RenderingHints}
+
+import scala.swing._
 import scala.swing.event.MouseClicked
 
 object GraphsApp extends SimpleSwingApplication {

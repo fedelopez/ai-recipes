@@ -1,14 +1,11 @@
-package net.bluegroper.psolving
+package cat.pseudocodi.psolving.hanoi
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.FunSuite
 
 /**
  * @author fede
  */
-@RunWith(classOf[JUnitRunner])
-class HanoiTest extends FunSuite {
+class HanoiSuite extends FunSuite {
 
   trait TestSets extends Hanoi {
 

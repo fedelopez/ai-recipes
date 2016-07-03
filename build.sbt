@@ -5,7 +5,7 @@ version := "1.0"
 scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
-  "com.cloudphysics" % "jerkson_2.10" % "0.6.3",
-  "junit" % "junit" % "4.11" % "test",
+  "org.scala-lang.modules" %% "scala-swing" % "1.0.1",
+  "com.gilt" %% "jerkson" % "0.6.9",
   "org.scalatest" %% "scalatest" % "2.2.6" % "test"
 )

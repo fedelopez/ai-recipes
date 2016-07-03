@@ -1,9 +1,9 @@
-package net.bluegroper.psolving
+package cat.pseudocodi.psolving.graphs
 
-import scala.io.Source
 import java.util.ArrayList
 
 import scala.collection.JavaConversions._
+import scala.io.Source
 
 /**
  * @author fede

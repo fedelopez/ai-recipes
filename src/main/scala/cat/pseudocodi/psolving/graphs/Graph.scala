@@ -1,5 +1,4 @@
-package net.bluegroper.psolving
-
+package cat.pseudocodi.psolving.graphs
 
 /**
  * @author fede

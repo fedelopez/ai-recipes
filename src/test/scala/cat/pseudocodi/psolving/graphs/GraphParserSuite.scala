@@ -1,16 +1,12 @@
-package net.bluegroper.psolving
+package cat.pseudocodi.psolving.graphs
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+import cat.pseudocodi.psolving.graphs.GraphParser.{parse, source}
 import org.scalatest.FunSuite
-import net.bluegroper.psolving.GraphParser.parse
-import net.bluegroper.psolving.GraphParser.source
 
 /**
  * @author fede
  */
-@RunWith(classOf[JUnitRunner])
-class GraphParserTest extends FunSuite {
+class GraphParserSuite extends FunSuite {
 
   trait TestSets {
     val croydon = new Node("Croydon", 1, 2)

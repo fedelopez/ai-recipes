@@ -1,14 +1,11 @@
-package net.bluegroper.psolving
+package cat.pseudocodi.psolving.graphs
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.FunSuite
 
 /**
  * @author fede
  */
-@RunWith(classOf[JUnitRunner])
-class GraphTest extends FunSuite {
+class GraphSuite extends FunSuite {
 
   trait TestSets {
     val nA = new Node("a", 0, 0)
