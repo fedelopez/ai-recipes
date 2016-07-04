@@ -1,8 +1,8 @@
 package cat.pseudocodi.psolving.graphs
 
 /**
- * @author fede
- */
+  * @author fede
+  */
 
 import java.awt.{BasicStroke, Color, RenderingHints}
 
@@ -18,6 +18,9 @@ object GraphsApp extends SimpleSwingApplication {
 
   val blue = new Color(0, 102, 153)
 
+  val stroke = new BasicStroke()
+  val strokeBold = new BasicStroke(2)
+
   val selectedNodes: scala.collection.mutable.ArrayBuffer[Node] = new scala.collection.mutable.ArrayBuffer[Node]()
   val path: scala.collection.mutable.ArrayBuffer[Node] = new scala.collection.mutable.ArrayBuffer[Node]()
 
@@ -31,10 +34,8 @@ object GraphsApp extends SimpleSwingApplication {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
         g.setColor(Color.darkGray)
 
-        if (selectedNodes.size > 0)
-          g.drawString(s"Start node: ${selectedNodes.apply(0).name} ", 10, 720)
-        if (selectedNodes.size > 1)
-          g.drawString(s"End node: ${selectedNodes.apply(1).name} ", 10, 740)
+        if (selectedNodes.size > 0) g.drawString(s"Start node: ${selectedNodes(0).name} ", 10, 720)
+        if (selectedNodes.size > 1) g.drawString(s"End node: ${selectedNodes(1).name} ", 10, 740)
 
         graph.edges.foreach((edge: Edge) => drawEdge(edge, g))
         graph.nodes.foreach((node: Node) => drawNode(node, g))
@@ -52,7 +53,7 @@ object GraphsApp extends SimpleSwingApplication {
             }
             if (selectedNodes.size == 2) {
               path.clear()
-              path.appendAll(graph.breadthFirstSearch(selectedNodes.apply(0), selectedNodes.apply(1)))
+              path.appendAll(graph.breadthFirstSearch(selectedNodes(0), selectedNodes(1)))
             }
             repaint()
           }
@@ -71,10 +72,10 @@ object GraphsApp extends SimpleSwingApplication {
 
     if (path.contains(n)) {
       g.setColor(blue)
-      g.setStroke(new BasicStroke(2))
+      g.setStroke(strokeBold)
     } else {
       g.setColor(Color.darkGray)
-      g.setStroke(new BasicStroke())
+      g.setStroke(stroke)
     }
     g.drawArc(rect.x, rect.y, rect.width, rect.height, 0, 360)
 
@@ -83,22 +84,18 @@ object GraphsApp extends SimpleSwingApplication {
   }
 
   def drawEdge(e: Edge, g: Graphics2D) = {
-    val xs: Int = top.preferredSize.width / 7
-
+    val xs: Int = frameWidth / 7
     val nodeA_x: Int = e.nodeA.x * xs + 50
     val nodeA_y: Int = (e.nodeA.y * xs) + (xs + xs / 4) / 2
-
     val nodeB_x: Int = e.nodeB.x * xs + 50
     val nodeB_y: Int = (e.nodeB.y * xs) + (xs + xs / 4) / 2
-
     if (path.contains(e.nodeA) && path.contains(e.nodeB)) {
       g.setColor(blue)
-      g.setStroke(new BasicStroke(2))
+      g.setStroke(strokeBold)
     } else {
       g.setColor(Color.lightGray)
-      g.setStroke(new BasicStroke())
+      g.setStroke(stroke)
     }
-
     g.drawLine(nodeA_x, nodeA_y + 25, nodeB_x, nodeB_y + 25)
   }
 
