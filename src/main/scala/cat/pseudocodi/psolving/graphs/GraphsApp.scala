@@ -34,8 +34,8 @@ object GraphsApp extends SimpleSwingApplication {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
         g.setColor(Color.darkGray)
 
-        if (selectedNodes.size > 0) g.drawString(s"Start node: ${selectedNodes(0).name} ", 10, 720)
-        if (selectedNodes.size > 1) g.drawString(s"End node: ${selectedNodes(1).name} ", 10, 740)
+        if (selectedNodes.size > 0) g.drawString(s"Start node: ${selectedNodes.head.name} ", 10, 720)
+        if (selectedNodes.size == 2) g.drawString(s"End node: ${selectedNodes.last.name} ", 10, 740)
 
         graph.edges.foreach((edge: Edge) => drawEdge(edge, g))
         graph.nodes.foreach((node: Node) => drawNode(node, g))
@@ -53,7 +53,7 @@ object GraphsApp extends SimpleSwingApplication {
             }
             if (selectedNodes.size == 2) {
               path.clear()
-              path.appendAll(graph.breadthFirstSearch(selectedNodes(0), selectedNodes(1)))
+              path.appendAll(graph.breadthFirstSearch(selectedNodes.head, selectedNodes.last))
             }
             repaint()
           }
