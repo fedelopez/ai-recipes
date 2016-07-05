@@ -3,8 +3,8 @@ package cat.pseudocodi.psolving.graphs
 import org.scalatest.FunSuite
 
 /**
- * @author fede
- */
+  * @author fede
+  */
 class GraphSuite extends FunSuite {
 
   trait TestSets {
@@ -102,6 +102,32 @@ class GraphSuite extends FunSuite {
       assert(res(4) === nF)
     }
   }
+
+  test("breadthFirstSearch: A to F when shorter path available via C") {
+    new TestSets {
+      val g3: Graph = new Graph(List(nA, nB, nC, nD, nE, nF, nG), List(new Edge(nA, nH), new Edge(nA, nC), new Edge(nC, nB), new Edge(nC, nD), new Edge(nC, nF), new Edge(nD, nE), new Edge(nE, nF), new Edge(nB, nG)))
+      val res: List[Node] = g3.breadthFirstSearch(nA, nF)
+      assert(res.length === 3)
+      assert(res(0) === nA)
+      assert(res(1) === nC)
+      assert(res(2) === nF)
+    }
+  }
+
+  test("depthFirstSearch: A to F when shorter path available via C is missed") {
+    new TestSets {
+      val g3: Graph = new Graph(List(nA, nB, nC, nD, nE, nF, nG), List(new Edge(nA, nH), new Edge(nA, nC), new Edge(nC, nB), new Edge(nC, nD), new Edge(nC, nF), new Edge(nD, nE), new Edge(nE, nF), new Edge(nB, nG)))
+      val res: List[Node] = g3.depthFirstSearch(nA, nF)
+      assert(res.length === 5)
+      assert(res(0) === nA)
+      assert(res(1) === nC)
+      assert(res(2) === nD)
+      assert(res(3) === nE)
+      assert(res(4) === nF)
+    }
+  }
+
+  //todo more complex depthFirstTest
 
 
 }

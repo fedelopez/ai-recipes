@@ -53,7 +53,7 @@ object GraphsApp extends SimpleSwingApplication {
             }
             if (selectedNodes.size == 2) {
               path.clear()
-              path.appendAll(graph.breadthFirstSearch(selectedNodes.head, selectedNodes.last))
+              path.appendAll(graph.depthFirstSearch(selectedNodes.head, selectedNodes.last))
             }
             repaint()
           }
