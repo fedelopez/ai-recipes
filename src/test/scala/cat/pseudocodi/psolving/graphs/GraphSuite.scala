@@ -66,7 +66,7 @@ class GraphSuite extends FunSuite {
     new TestSets {
       val res: List[Node] = g.breadthFirstSearch(nA, nB)
       assert(res.length === 3)
-      assert(res(0) === nA)
+      assert(res.head === nA)
       assert(res(1) === nC)
       assert(res(2) === nB)
     }
@@ -76,7 +76,7 @@ class GraphSuite extends FunSuite {
     new TestSets {
       val res: List[Node] = g.breadthFirstSearch(nC, nA)
       assert(res.length === 2)
-      assert(res(0) === nC)
+      assert(res.head === nC)
       assert(res(1) === nA)
     }
   }
@@ -85,7 +85,7 @@ class GraphSuite extends FunSuite {
     new TestSets {
       val res: List[Node] = g2.breadthFirstSearch(nB, nA)
       assert(res.length === 3)
-      assert(res(0) === nB)
+      assert(res.head === nB)
       assert(res(1) === nC)
       assert(res(2) === nA)
     }
@@ -95,7 +95,7 @@ class GraphSuite extends FunSuite {
     new TestSets {
       val res: List[Node] = g2.breadthFirstSearch(nA, nF)
       assert(res.length === 5)
-      assert(res(0) === nA)
+      assert(res.head === nA)
       assert(res(1) === nC)
       assert(res(2) === nD)
       assert(res(3) === nE)
@@ -108,7 +108,7 @@ class GraphSuite extends FunSuite {
       val g3: Graph = new Graph(List(nA, nB, nC, nD, nE, nF, nG), List(new Edge(nA, nH), new Edge(nA, nC), new Edge(nC, nB), new Edge(nC, nD), new Edge(nC, nF), new Edge(nD, nE), new Edge(nE, nF), new Edge(nB, nG)))
       val res: List[Node] = g3.breadthFirstSearch(nA, nF)
       assert(res.length === 3)
-      assert(res(0) === nA)
+      assert(res.head === nA)
       assert(res(1) === nC)
       assert(res(2) === nF)
     }
@@ -119,15 +119,11 @@ class GraphSuite extends FunSuite {
       val g3: Graph = new Graph(List(nA, nB, nC, nD, nE, nF, nG), List(new Edge(nA, nH), new Edge(nA, nC), new Edge(nC, nB), new Edge(nC, nD), new Edge(nC, nF), new Edge(nD, nE), new Edge(nE, nF), new Edge(nB, nG)))
       val res: List[Node] = g3.depthFirstSearch(nA, nF)
       assert(res.length === 5)
-      assert(res(0) === nA)
+      assert(res.head === nA)
       assert(res(1) === nC)
       assert(res(2) === nD)
       assert(res(3) === nE)
       assert(res(4) === nF)
     }
   }
-
-  //todo more complex depthFirstTest
-
-
 }

@@ -20,11 +20,11 @@ case class Graph(nodes: List[Node], edges: List[Edge]) {
     }).filter(_ != null)
   }
 
-  def breadthFirstSearch(initial: Node, goal: Node): List[Node] = {
+  def graphSearch(from: Node, goal: Node, f: List[List[Node]] => List[Node]): List[Node] = {
     def doIt(visited: List[Node], frontier: List[List[Node]]): List[Node] = {
       if (frontier.isEmpty) throw new IllegalStateException("No solution: empty frontier")
       else {
-        val path: List[Node] = frontier.head
+        val path: List[Node] = f(frontier)
         val lastNode: Node = path.reverse.head
         if (lastNode == goal) path
         else {
@@ -33,31 +33,15 @@ case class Graph(nodes: List[Node], edges: List[Edge]) {
           val newFrontier: List[List[Node]] = frontier.filterNot((nodes: List[Node]) => nodes == path) ::: paths
           doIt(lastNode :: visited, newFrontier)
         }
-
       }
     }
-    doIt(List(), List(List(initial)))
+    doIt(List(), List(List(from)))
   }
 
-  def depthFirstSearch(initial: Node, goal: Node): List[Node] = {
+  def breadthFirstSearch(from: Node, goal: Node): List[Node] =
+    graphSearch(from, goal, (list: List[List[Node]]) => list.head)
 
-    def doIt(visited: List[Node], frontier: List[List[Node]]): List[Node] = {
-      if (frontier.isEmpty) throw new IllegalStateException("No solution: empty frontier")
-      else {
-        val path: List[Node] = frontier.reduce((path1, path2) => if (path1.size >= path2.size) path1 else path2)
-        val lastNode: Node = path.reverse.head
-        if (lastNode == goal) path
-        else {
-          val actions: List[Node] = neighbors(lastNode).filterNot((node: Node) => visited.contains(node))
-          val paths: List[List[Node]] = actions.map((action: Node) => path ::: List(action))
-          val newFrontier: List[List[Node]] = frontier.filterNot((nodes: List[Node]) => nodes == path) ::: paths
-          doIt(lastNode :: visited, newFrontier)
-        }
-
-      }
-    }
-    doIt(List(), List(List(initial)))
-  }
-
+  def depthFirstSearch(from: Node, goal: Node): List[Node] =
+    graphSearch(from, goal, (paths: List[List[Node]]) => paths.reduce((p1, p2) => if (p1.size >= p2.size) p1 else p2))
 
 }
