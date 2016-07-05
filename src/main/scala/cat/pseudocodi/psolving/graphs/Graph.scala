@@ -9,9 +9,8 @@ case class Edge(nodeA: Node, nodeB: Node)
 
 case class Graph(nodes: List[Node], edges: List[Edge]) {
 
-  def adjacent(a: Node, b: Node): Boolean = {
-    edges.find((edge: Edge) => (edge.nodeA == a && edge.nodeB == b) || (edge.nodeA == b && edge.nodeB == a)).nonEmpty
-  }
+  def adjacent(a: Node, b: Node): Boolean =
+    edges.exists((edge: Edge) => (edge.nodeA == a && edge.nodeB == b) || (edge.nodeA == b && edge.nodeB == a))
 
   def neighbors(a: Node): List[Node] = {
     edges.map((edge: Edge) => {
