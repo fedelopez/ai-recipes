@@ -1,14 +1,13 @@
 package cat.pseudocodi.psolving.graphs
 
-/**
-  * @author fede
-  */
-
 import java.awt.{BasicStroke, Color, RenderingHints}
 
 import scala.swing._
 import scala.swing.event.MouseClicked
 
+/**
+  * @author fede
+  */
 object GraphsApp extends SimpleSwingApplication {
 
   val graph: Graph = GraphParser.parse(GraphParser.source)
