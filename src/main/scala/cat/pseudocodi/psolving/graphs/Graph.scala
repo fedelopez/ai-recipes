@@ -42,7 +42,7 @@ sealed case class Graph(nodes: List[Node], edges: List[Edge]) {
     graphSearch(from, goal, (list: List[List[Node]]) => list.head)
 
   def depthFirstSearch(from: Node, goal: Node): List[Node] =
-    graphSearch(from, goal, (paths: List[List[Node]]) => paths.reduce((p1, p2) => if (p1.size >= p2.size) p1 else p2))
+    graphSearch(from, goal, (paths: List[List[Node]]) => paths.reduceLeft((p1, p2) => if (p1.size >= p2.size) p1 else p2))
 
 }
 
