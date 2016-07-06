@@ -16,7 +16,7 @@ object GraphParser {
     val res: List[Node] = com.codahale.jerkson.Json.parse[List[Node]](json)
     val jsonAsMap = com.codahale.jerkson.Json.parse[List[Map[String, Any]]](json)
     val allEdges: List[Edge] = edges(res, jsonAsMap, List())
-    new Graph(res, GraphUtil.removeDuplicates(allEdges))
+    new Graph(res, Graph.removeDuplicates(allEdges))
   }
 
   def edges(nodes: List[Node], jsonMap: List[Map[String, Any]], acc: List[Edge]): List[Edge] = {

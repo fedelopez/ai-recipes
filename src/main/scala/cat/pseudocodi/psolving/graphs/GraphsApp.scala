@@ -53,13 +53,12 @@ object GraphsApp extends SimpleSwingApplication {
             }
             if (selectedNodes.size == 2) {
               path.clear()
-              path.appendAll(graph.breadthFirstSearch(selectedNodes.head, selectedNodes.last))
+              path.appendAll(graph.depthFirstSearch(selectedNodes.head, selectedNodes.last))
             }
             repaint()
           }
       }
     }
-
   }
 
   def drawNode(n: Node, g: Graphics2D) = {
@@ -89,7 +88,7 @@ object GraphsApp extends SimpleSwingApplication {
     val nodeA_y: Int = (e.nodeA.y * xs) + (xs + xs / 4) / 2
     val nodeB_x: Int = e.nodeB.x * xs + 50
     val nodeB_y: Int = (e.nodeB.y * xs) + (xs + xs / 4) / 2
-    if (path.contains(e.nodeA) && path.contains(e.nodeB)) {
+    if (Graph.adjacentOnPath(e, path.toList)) {
       g.setColor(blue)
       g.setStroke(strokeBold)
     } else {
