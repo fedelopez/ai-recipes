@@ -12,7 +12,7 @@ class GraphSuite extends FunSuite {
     val nB = new Node("b", 1, 0)
     val nC = new Node("c", 2, 0)
     val nD = new Node("d", 3, 0)
-    val nE = new Node("d", 4, 0)
+    val nE = new Node("e", 4, 0)
     val nF = new Node("f", 5, 0)
     val nG = new Node("g", 6, 0)
     val nH = new Node("h", 7, 0)
@@ -124,6 +124,22 @@ class GraphSuite extends FunSuite {
       assert(res(2) === nD)
       assert(res(3) === nE)
       assert(res(4) === nF)
+    }
+  }
+
+  /**
+    * https://en.wikipedia.org/wiki/Depth-first_search#/media/File:Graph.traversal.example.svg
+    */
+  test("depthFirstSearch visits the edges traversed in a search forming a Trémaux tree") {
+    new TestSets {
+      val edges: List[Edge] = List(new Edge(nA, nB), new Edge(nA, nC), new Edge(nA, nE), new Edge(nB, nD), new Edge(nB, nF), new Edge(nC, nG), new Edge(nE, nF))
+      val graph: Graph = new Graph(List(nA, nB, nC, nD, nE, nF, nG), edges)
+      val res: List[Node] = graph.depthFirstSearch(nA, nE)
+      assert(res.length === 4)
+      assert(res.head === nA)
+      assert(res(1) === nB)
+      assert(res(2) === nF)
+      assert(res(3) === nE)
     }
   }
 }
