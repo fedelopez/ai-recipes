@@ -9,6 +9,11 @@ import javax.imageio.ImageIO
 import javax.swing.{ImageIcon, JFrame, JLabel}
 
 /**
+  * Constraint satisfaction problems
+  *
+  * - https://www.youtube.com/watch?v=hJ9WOiueJes&feature=youtu.be
+  * - https://www.youtube.com/watch?v=d1KyYyLmGpA&index=8&list=PLUl4u3cNGP63gFHB6xb-kVBiQHYe_4hSi
+  *
   * @author fede
   */
 object MapColoring {
