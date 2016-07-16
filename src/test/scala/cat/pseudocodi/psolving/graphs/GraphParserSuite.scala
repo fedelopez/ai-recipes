@@ -19,7 +19,7 @@ class GraphParserSuite extends FunSuite {
 
   test("parse source") {
     val source = Source.fromFile(getClass.getResource("layout.json").getFile).mkString
-    val actual: Graph = parse(GraphsApp.source)
+    val actual: Graph = parse(source)
     assert(actual.nodes.length === 16)
     assert(actual.edges.length === 26)
   }

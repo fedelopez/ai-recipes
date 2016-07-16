@@ -2,8 +2,11 @@ package cat.pseudocodi.psolving.constraints
 
 import java.awt.Color
 
+import cat.pseudocodi.psolving.graphs.GraphParser._
 import cat.pseudocodi.psolving.graphs.{Edge, Graph, Node}
 import org.scalatest.{FlatSpec, Matchers}
+
+import scala.io.Source
 
 /**
   * @author fede
@@ -31,10 +34,19 @@ class MapColoringAppSuite extends FlatSpec with Matchers {
     val qld = Node("QLD", 0, 0)
     val vic = Node("VIC", 0, 0)
     val wa = Node("WA", 0, 0)
-    val nodes = List(nsw, nt, sa, qld, sa, vic, wa)
+    val nodes = List(nsw, nt, sa, qld, vic, wa)
     val edges = List(Edge(wa, nt), Edge(wa, sa), Edge(nt, qld), Edge(nt, sa), Edge(qld, sa), Edge(qld, nsw), Edge(nsw, sa), Edge(nsw, vic), Edge(vic, sa))
     val g = Graph(nodes, edges)
     val vars: List[Variable] = MapColoringApp.backtracking(g)
+    assert(edges.forall(edge => color(edge.nodeA, vars) != color(edge.nodeB, vars)))
+  }
+
+  "backtracking" should "return adjacent regions with different colors on large graph" in {
+    val source = Source.fromFile(getClass.getResource("comarques.json").getFile).mkString
+    val g: Graph = parse(source)
+    val edges = g.edges
+    val vars: List[Variable] = MapColoringApp.backtracking(g)
+    assert(vars.size === g.nodes.size)
     assert(edges.forall(edge => color(edge.nodeA, vars) != color(edge.nodeB, vars)))
   }
 

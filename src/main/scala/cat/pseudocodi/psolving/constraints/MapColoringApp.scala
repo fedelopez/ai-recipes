@@ -15,10 +15,11 @@ case class Variable(n: Node, color: Color)
 object Domain {
   val amber: Color = new Color(255, 191, 0)
   val apricot: Color = new Color(251, 206, 177)
+  val chartreuse: Color = new Color(127, 255, 0)
   val mustard: Color = new Color(255, 219, 88)
   val olive: Color = new Color(128, 128, 0)
 
-  def colors = List(amber, apricot, mustard, olive)
+  def colors = List(amber, apricot, chartreuse, mustard, olive)
 }
 
 object MapColoringApp {
@@ -35,13 +36,8 @@ object MapColoringApp {
         val c: Color = Domain.colors.diff(usedColors).head
         val v: Variable = Variable(n, c)
         val newVars: List[Variable] = v :: visited
-        if (newVars.length == g.nodes.length) {
-          visited
-        }
-        else {
-          val filteredTail: List[Node] = nodes.tail.filter(p => neighbors.contains(p))
-          doIt(neighbors ::: filteredTail, newVars)
-        }
+        val remaining: List[Node] = nodes.tail.filterNot(p => neighbors.contains(p))
+        doIt(neighbors ::: remaining, newVars)
       } else {
         visited
       }
