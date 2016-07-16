@@ -8,17 +8,17 @@ import org.scalatest.FunSuite
 class GraphSuite extends FunSuite {
 
   trait TestSets {
-    val nA = new Node("a", 0, 0)
-    val nB = new Node("b", 1, 0)
-    val nC = new Node("c", 2, 0)
-    val nD = new Node("d", 3, 0)
-    val nE = new Node("e", 4, 0)
-    val nF = new Node("f", 5, 0)
-    val nG = new Node("g", 6, 0)
-    val nH = new Node("h", 7, 0)
+    val nA = Node("a", 0, 0)
+    val nB = Node("b", 1, 0)
+    val nC = Node("c", 2, 0)
+    val nD = Node("d", 3, 0)
+    val nE = Node("e", 4, 0)
+    val nF = Node("f", 5, 0)
+    val nG = Node("g", 6, 0)
+    val nH = Node("h", 7, 0)
 
-    val g: Graph = new Graph(List(nA, nB, nC), List(new Edge(nA, nC), new Edge(nB, nC)))
-    val g2: Graph = new Graph(List(nA, nB, nC, nD, nE, nF, nG), List(new Edge(nA, nH), new Edge(nA, nC), new Edge(nC, nB), new Edge(nC, nD), new Edge(nD, nE), new Edge(nE, nF), new Edge(nB, nG)))
+    val g: Graph = Graph(List(nA, nB, nC), List(Edge(nA, nC), Edge(nB, nC)))
+    val g2: Graph = Graph(List(nA, nB, nC, nD, nE, nF, nG), List(Edge(nA, nH), Edge(nA, nC), Edge(nC, nB), Edge(nC, nD), Edge(nD, nE), Edge(nE, nF), Edge(nB, nG)))
   }
 
   test("adjacent") {
@@ -105,7 +105,7 @@ class GraphSuite extends FunSuite {
 
   test("breadthFirstSearch: A to F when shorter path available via C") {
     new TestSets {
-      val g3: Graph = new Graph(List(nA, nB, nC, nD, nE, nF, nG), List(new Edge(nA, nH), new Edge(nA, nC), new Edge(nC, nB), new Edge(nC, nD), new Edge(nC, nF), new Edge(nD, nE), new Edge(nE, nF), new Edge(nB, nG)))
+      val g3: Graph = Graph(List(nA, nB, nC, nD, nE, nF, nG), List(Edge(nA, nH), Edge(nA, nC), Edge(nC, nB), Edge(nC, nD), Edge(nC, nF), Edge(nD, nE), Edge(nE, nF), Edge(nB, nG)))
       val res: List[Node] = g3.breadthFirstSearch(nA, nF)
       assert(res.length === 3)
       assert(res.head === nA)
@@ -116,7 +116,7 @@ class GraphSuite extends FunSuite {
 
   test("depthFirstSearch: A to F when shorter path available via C is missed") {
     new TestSets {
-      val g3: Graph = new Graph(List(nA, nB, nC, nD, nE, nF, nG), List(new Edge(nA, nH), new Edge(nA, nC), new Edge(nC, nB), new Edge(nC, nD), new Edge(nC, nF), new Edge(nD, nE), new Edge(nE, nF), new Edge(nB, nG)))
+      val g3: Graph = Graph(List(nA, nB, nC, nD, nE, nF, nG), List(Edge(nA, nH), Edge(nA, nC), Edge(nC, nB), Edge(nC, nD), Edge(nC, nF), Edge(nD, nE), Edge(nE, nF), Edge(nB, nG)))
       val res: List[Node] = g3.depthFirstSearch(nA, nF)
       assert(res.length === 5)
       assert(res.head === nA)
@@ -132,8 +132,8 @@ class GraphSuite extends FunSuite {
     */
   test("depthFirstSearch visits the edges traversed in a search forming a Trémaux tree") {
     new TestSets {
-      val edges: List[Edge] = List(new Edge(nA, nB), new Edge(nA, nC), new Edge(nA, nE), new Edge(nB, nD), new Edge(nB, nF), new Edge(nC, nG), new Edge(nE, nF))
-      val graph: Graph = new Graph(List(nA, nB, nC, nD, nE, nF, nG), edges)
+      val edges: List[Edge] = List(Edge(nA, nB), Edge(nA, nC), Edge(nA, nE), Edge(nB, nD), Edge(nB, nF), Edge(nC, nG), Edge(nE, nF))
+      val graph: Graph = Graph(List(nA, nB, nC, nD, nE, nF, nG), edges)
       val res: List[Node] = graph.depthFirstSearch(nA, nE)
       assert(res.length === 4)
       assert(res.head === nA)

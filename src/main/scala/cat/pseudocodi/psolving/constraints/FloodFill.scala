@@ -9,20 +9,17 @@ import javax.imageio.ImageIO
 import javax.swing.{ImageIcon, JFrame, JLabel}
 
 /**
-  * Constraint satisfaction problems
-  *
-  * - https://www.youtube.com/watch?v=hJ9WOiueJes&feature=youtu.be
-  * - https://www.youtube.com/watch?v=d1KyYyLmGpA&index=8&list=PLUl4u3cNGP63gFHB6xb-kVBiQHYe_4hSi
+  * https://en.wikipedia.org/wiki/Flood_fill
   *
   * @author fede
   */
-object MapColoring {
+object FloodFill {
 
-  val targetColor: Int = new Color(149, 149, 149).getRGB
-  val replacementColor: Int = Color.YELLOW.getRGB
+  val targetColor: Int = new Color(142, 215, 176).getRGB
+  val replacementColor: Int = new Color(149, 149, 149).getRGB
 
   def main(args: Array[String]) {
-    val file: String = MapColoring.getClass.getResource("vall-daran.png").getFile
+    val file: String = FloodFill.getClass.getResource("vall-daran.png").getFile
     val bi: BufferedImage = ImageIO.read(new File(file))
     val width: Int = bi.getWidth
     val height: Int = bi.getHeight
@@ -39,7 +36,7 @@ object MapColoring {
     baos.close
 
     val imageIcon: ImageIcon = new ImageIcon(imageBytes)
-    val frame = new JFrame("MapColoring")
+    val frame = new JFrame("FloodFill")
     frame.add(new JLabel(imageIcon))
     frame.setVisible(true)
     frame.pack
@@ -49,8 +46,6 @@ object MapColoring {
     * Flood fill using recursion
     *
     * cons: needs -Xss4M
-    *
-    * https://en.wikipedia.org/wiki/Flood_fill
     */
   def floodFillRecursive(p: Point, bi: BufferedImage) {
     val color: Int = bi.getRGB(p.x, p.y)
@@ -65,8 +60,6 @@ object MapColoring {
 
   /**
     * Flood fill using queues
-    *
-    * https://en.wikipedia.org/wiki/Flood_fill
     */
   def floodFillQueue(initial: Point, bi: BufferedImage) {
     val q = scala.collection.mutable.Queue[Point]()
@@ -92,8 +85,6 @@ object MapColoring {
 
   /**
     * Flood fill using a loop for the west and east directions as an optimization to avoid the overhead of stack or queue management
-    *
-    * https://en.wikipedia.org/wiki/Flood_fill
     */
   def floodFillQueueEastWest(initial: Point, bi: BufferedImage) {
     val q = scala.collection.mutable.Queue[Point]()

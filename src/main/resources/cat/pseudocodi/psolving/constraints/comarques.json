@@ -1,0 +1,490 @@
+[
+  {
+    "name": "l'Alt Camp",
+    "x": 260,
+    "y": 460,
+    "neighbors": [
+      "la Conca de Barberà",
+      "el Baix Camp",
+      "el Tarragonès",
+      "el Baix Penedès",
+      "AP",
+      "l'Anoia"
+    ]
+  },
+  {
+    "name": "l'Alt Empordà",
+    "x": 625,
+    "y": 170,
+    "neighbors": [
+      "la Garrotxa",
+      "el Pla de l'Estany",
+      "el Gironès",
+      "el Baix Empordà"
+    ]
+  },
+  {
+    "name": "l'Alt Penedès",
+    "x": 350,
+    "y": 440,
+    "neighbors": [
+      "l'Anoia",
+      "l'Alt Camp",
+      "el Baix Penedès",
+      "el Garraf"
+    ]
+  },
+  {
+    "name": "l'Alt Urgell",
+    "x": 285,
+    "y": 170,
+    "neighbors": [
+      "el Pallars Sobirà",
+      "el Pallars Jussà",
+      "la Noguera",
+      "el Solsonès",
+      "el Berguedà",
+      "la Cerdanya"
+    ]
+  },
+  {
+    "name": "l'Alta Ribagorça",
+    "x": 160,
+    "y": 105,
+    "neighbors": [
+      "la Vall d'Aran",
+      "el Pallars Jussà",
+      "el Pallars Sobirà"
+    ]
+  },
+  {
+    "name": "l'Anoia",
+    "x": 315,
+    "y": 380,
+    "neighbors": [
+      "el Solsonès",
+      "la Segarra",
+      "la Conca de Barberà",
+      "l'Alt Camp",
+      "l'Alt Penedès",
+      "el Baix Llobregat",
+      "el Bages"
+    ]
+  },
+  {
+    "name": "el Bages",
+    "x": 360,
+    "y": 320,
+    "neighbors": [
+      "l'Anoia",
+      "el Berguedà",
+      "el Baix Llobregat",
+      "el Solsonès",
+      "el Vallès Occidental",
+      "el Moianès",
+      "Osona"
+    ]
+  },
+  {
+    "name": "el Baix Camp",
+    "x": 190,
+    "y": 510,
+    "neighbors": [
+      "la Conca de Barberà",
+      "el Priorat",
+      "la Ribera d'Ebre",
+      "el Tarragonès",
+      "l'Alt Camp"
+    ]
+  },
+  {
+    "name": "el Baix Ebre",
+    "x": 90,
+    "y": 595,
+    "neighbors": [
+      "la Terra Alta",
+      "el Montsià",
+      "la Ribera d'Ebre",
+      "el Baix Camp"
+    ]
+  },
+  {
+    "name": "el Baix Empordà",
+    "x": 650,
+    "y": 275,
+    "neighbors": [
+      "l'Alt Empordà",
+      "el Gironès",
+      "la Selva"
+    ]
+  },
+  {
+    "name": "el Baix Llobregat",
+    "x": 40,
+    "y": 450,
+    "neighbors": [
+      "el Bages",
+      "l'Anoia",
+      "l'Alt Penedès",
+      "el Garraf",
+      "el Barcelonès",
+      "el Vallès Occidental"
+    ]
+  },
+  {
+    "name": "el Baix Penedès",
+    "x": 305,
+    "y": 480,
+    "neighbors": [
+      "l'Alt Penedès",
+      "l'Alt Camp",
+      "el Tarragonès",
+      "el Garraf"
+    ]
+  },
+  {
+    "name": "el Barcelonès",
+    "x": 450,
+    "y": 435,
+    "neighbors": [
+      "el Vallès Oriental",
+      "el Vallès Occidental",
+      "el Baix Llobregat",
+      "el Maresme"
+    ]
+  },
+  {
+    "name": "el Berguedà",
+    "x": 380,
+    "y": 235,
+    "neighbors": [
+      "la Cerdanya",
+      "l'Alt Urgell",
+      "el Solsonès",
+      "el Bages",
+      "Osona",
+      "el Ripollès"
+    ]
+  },
+  {
+    "name": "la Cerdanya",
+    "x": 375,
+    "y": 150,
+    "neighbors": [
+      "l'Alt Urgell",
+      "el Berguedà",
+      "el Ripollès"
+    ]
+  },
+  {
+    "name": "la Conca de Barberà",
+    "x": 230,
+    "y": 425,
+    "neighbors": [
+      "la Segarra",
+      "l'Urgell",
+      "les Garrigues",
+      "el Priorat",
+      "el Baix Camp",
+      "l'Alt Camp",
+      "l'Anoia"
+    ]
+  },
+  {
+    "name": "el Garraf",
+    "x": 360,
+    "y": 480,
+    "neighbors": [
+      "l'Alt Penedès",
+      "el Baix Penedès",
+      "el Baix Llobregat"
+    ]
+  },
+  {
+    "name": "les Garrigues",
+    "x": 150,
+    "y": 420,
+    "neighbors": [
+      "el Pla d'Urgell",
+      "el Segrià",
+      "la Ribera d'Ebre",
+      "el Priorat",
+      "la Conca de Barberà",
+      "l'Urgell"
+    ]
+  },
+  {
+    "name": "la Garrotxa",
+    "x": 540,
+    "y": 205,
+    "neighbors": [
+      "el Ripollès",
+      "Osona",
+      "la Selva",
+      "el Gironès",
+      "el Pla de l'Estany",
+      "l'Alt Empordà"
+    ]
+  },
+  {
+    "name": "el Gironès",
+    "x": 600,
+    "y": 271,
+    "neighbors": [
+      "el Pla de l'Estany",
+      "la Garrotxa",
+      "la Selva",
+      "el Baix Empordà",
+      "l'Alt Empordà"
+    ]
+  },
+  {
+    "name": "el Maresme",
+    "x": 530,
+    "y": 380,
+    "neighbors": [
+      "la Selva",
+      "el Vallès Oriental",
+      "el Barcelonès"
+    ]
+  },
+  {
+    "name": "el Moianès",
+    "x": 440,
+    "y": 320,
+    "neighbors": [
+      "Osona",
+      "el Bages",
+      "el Vallès Occidental",
+      "el Vallès Oriental"
+    ]
+  },
+  {
+    "name": "el Montsià",
+    "x": 70,
+    "y": 650,
+    "neighbors": [
+      "el Baix Ebre"
+    ]
+  },
+  {
+    "name": "la Noguera",
+    "x": 170,
+    "y": 290,
+    "neighbors": [
+      "el Pallars Jussà",
+      "el Segrià",
+      "el Pla d'Urgell",
+      "l'Urgell",
+      "la Segarra",
+      "el Solsonès",
+      "l'Alt Urgell"
+    ]
+  },
+  {
+    "name": "Osona",
+    "x": 470,
+    "y": 265,
+    "neighbors": [
+      "el Ripollès",
+      "el Berguedà",
+      "el Bages",
+      "el Moianès",
+      "el Vallès Oriental",
+      "la Selva",
+      "la Garrotxa"
+    ]
+  },
+  {
+    "name": "el Pallars Jussà",
+    "x": 180,
+    "y": 190,
+    "neighbors": [
+      "el Pallars Sobirà",
+      "l'Alta Ribagorça",
+      "la Noguera",
+      "l'Alt Urgell"
+    ]
+  },
+  {
+    "name": "el Pallars Sobirà",
+    "x": 230,
+    "y": 85,
+    "neighbors": [
+      "la Vall d'Aran",
+      "l'Alta Ribagorça",
+      "el Pallars Jussà",
+      "l'Alt Urgell"
+    ]
+  },
+  {
+    "name": "el Pla d'Urgell",
+    "x": 165,
+    "y": 360,
+    "neighbors": [
+      "la Noguera",
+      "el Segrià",
+      "les Garrigues",
+      "l'Urgell"
+    ]
+  },
+  {
+    "name": "el Pla de l'Estany",
+    "x": 590,
+    "y": 225,
+    "neighbors": [
+      "l'Alt Empordà",
+      "la Garrotxa",
+      "el Gironès"
+    ]
+  },
+  {
+    "name": "el Priorat",
+    "x": 145,
+    "y": 480,
+    "neighbors": [
+      "les Garrigues",
+      "la Ribera d'Ebre",
+      "el Baix Camp",
+      "la Conca de Barberà"
+    ]
+  },
+  {
+    "name": "la Ribera d'Ebre",
+    "x": 100,
+    "y": 500,
+    "neighbors": [
+      "el Segrià",
+      "la Terra Alta",
+      "el Priorat",
+      "les Garrigues",
+      "el Baix Camp",
+      "el Baix Ebre"
+    ]
+  },
+  {
+    "name": "el Ripollès",
+    "x": 370,
+    "y": 150,
+    "neighbors": [
+      "la Cerdanya",
+      "el Berguedà",
+      "Osona",
+      "la Garrotxa"
+    ]
+  },
+  {
+    "name": "la Segarra",
+    "x": 0,
+    "y": 0,
+    "neighbors": [
+      "la Noguera",
+      "l'Urgell",
+      "la Conca de Barberà",
+      "l'Anoia",
+      "el Solsonès"
+    ]
+  },
+  {
+    "name": "el Segrià",
+    "x": 90,
+    "y": 390,
+    "neighbors": [
+      "la Noguera",
+      "el Pla d'Urgell",
+      "les Garrigues",
+      "la Ribera d'Ebre"
+    ]
+  },
+  {
+    "name": "la Selva",
+    "x": 550,
+    "y": 310,
+    "neighbors": [
+      "la Garrotxa",
+      "Osona",
+      "el Vallès Oriental",
+      "el Maresme",
+      "el Gironès",
+      "el Baix Empordà"
+    ]
+  },
+  {
+    "name": "el Solsonès",
+    "x": 310,
+    "y": 255,
+    "neighbors": [
+      "l'Alt Urgell",
+      "la Segarra",
+      "la Noguera",
+      "l'Anoia",
+      "el Bages",
+      "el Berguedà"
+    ]
+  },
+  {
+    "name": "el Tarragonès",
+    "x": 260,
+    "y": 505,
+    "neighbors": [
+      "l'Alt Camp",
+      "el Baix Camp",
+      "el Baix Penedès"
+    ]
+  },
+  {
+    "name": "la Terra Alta",
+    "x": 50,
+    "y": 530,
+    "neighbors": [
+      "la Ribera d'Ebre",
+      "el Baix Ebre"
+    ]
+  },
+  {
+    "name": "l'Urgell",
+    "x": 215,
+    "y": 365,
+    "neighbors": [
+      "la Noguera",
+      "el Pla d'Urgell",
+      "les Garrigues",
+      "la Conca de Barberà",
+      "la Segarra"
+    ]
+  },
+  {
+    "name": "la Vall d'Aran",
+    "x": 165,
+    "y": 40,
+    "neighbors": [
+      "l'Alta Ribagorça",
+      "el Pallars Sobirà"
+    ]
+  },
+  {
+    "name": "el Vallès Occidental",
+    "x": 430,
+    "y": 400,
+    "neighbors": [
+      "el Moianès",
+      "el Bages",
+      "el Baix Llobregat",
+      "el Barcelonès",
+      "el Vallès Oriental"
+    ]
+  },
+  {
+    "name": "el Vallès Oriental",
+    "x": 490,
+    "y": 360,
+    "neighbors": [
+      "Osona",
+      "el Moianès",
+      "el Vallès Occidental",
+      "el Barcelonès",
+      "el Maresme",
+      "la Selva"
+    ]
+  }
+]

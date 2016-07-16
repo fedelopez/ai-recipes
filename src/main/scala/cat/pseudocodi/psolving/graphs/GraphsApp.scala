@@ -2,6 +2,7 @@ package cat.pseudocodi.psolving.graphs
 
 import java.awt.{BasicStroke, Color, RenderingHints}
 
+import scala.io.Source
 import scala.swing._
 import scala.swing.event.MouseClicked
 
@@ -10,7 +11,8 @@ import scala.swing.event.MouseClicked
   */
 object GraphsApp extends SimpleSwingApplication {
 
-  val graph: Graph = GraphParser.parse(GraphParser.source)
+  val source = Source.fromFile(getClass.getResource("layout.json").getFile).mkString
+  val graph: Graph = GraphParser.parse(source)
 
   val frameWidth = 700
   val frameHeight = 800

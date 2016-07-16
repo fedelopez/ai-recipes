@@ -8,16 +8,16 @@ import org.scalatest.FunSuite
 class GraphObjectSuite extends FunSuite {
 
   trait TestSets {
-    val nodeA = new Node("a", 0, 0)
-    val nodeB = new Node("b", 1, 0)
-    val nodeC = new Node("c", 1, 1)
-    val nodeD = new Node("d", 0, 1)
-    val nodeE = new Node("e", 1, 1)
+    val nodeA = Node("a", 0, 0)
+    val nodeB = Node("b", 1, 0)
+    val nodeC = Node("c", 1, 1)
+    val nodeD = Node("d", 0, 1)
+    val nodeE = Node("e", 1, 1)
 
-    val edgeAB = new Edge(nodeA, nodeB)
-    val edgeBA = new Edge(nodeB, nodeA)
-    val edgeAC = new Edge(nodeA, nodeC)
-    val edgeCA = new Edge(nodeC, nodeA)
+    val edgeAB = Edge(nodeA, nodeB)
+    val edgeBA = Edge(nodeB, nodeA)
+    val edgeAC = Edge(nodeA, nodeC)
+    val edgeCA = Edge(nodeC, nodeA)
   }
 
   test("remove duplicates") {
@@ -40,21 +40,21 @@ class GraphObjectSuite extends FunSuite {
   test("should return true when 2 adjacent nodes on a given path") {
     new TestSets {
       val nodes = List(nodeA, nodeB, nodeC, nodeD, nodeE)
-      assert(Graph.adjacentOnPath(new Edge(nodeC, nodeD), nodes) === true)
+      assert(Graph.adjacentOnPath(Edge(nodeC, nodeD), nodes) === true)
     }
   }
 
   test("should return true when 2 adjacent nodes on a given path are last ones") {
     new TestSets {
       val nodes = List(nodeA, nodeB, nodeC, nodeD, nodeE)
-      assert(Graph.adjacentOnPath(new Edge(nodeD, nodeE), nodes) === true)
+      assert(Graph.adjacentOnPath(Edge(nodeD, nodeE), nodes) === true)
     }
   }
 
   test("should return false when no adjacent nodes on a given path") {
     new TestSets {
       val nodes = List(nodeA, nodeB, nodeC, nodeD, nodeE)
-      assert(Graph.adjacentOnPath(new Edge(nodeB, nodeD), nodes) === false)
+      assert(Graph.adjacentOnPath(Edge(nodeB, nodeD), nodes) === false)
     }
   }
 }

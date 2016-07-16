@@ -3,14 +3,11 @@ package cat.pseudocodi.psolving.graphs
 import java.util.ArrayList
 
 import scala.collection.JavaConversions._
-import scala.io.Source
 
 /**
  * @author fede
  */
 object GraphParser {
-
-  lazy val source = Source.fromFile(getClass.getResource("layout.json").getFile).mkString
 
   def parse(json: String): Graph = {
     val res: List[Node] = com.codahale.jerkson.Json.parse[List[Node]](json)
