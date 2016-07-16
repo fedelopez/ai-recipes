@@ -120,7 +120,7 @@
   },
   {
     "name": "el Baix Llobregat",
-    "x": 40,
+    "x": 410,
     "y": 450,
     "neighbors": [
       "el Bages",
@@ -364,8 +364,8 @@
   },
   {
     "name": "el Ripollès",
-    "x": 370,
-    "y": 150,
+    "x": 470,
+    "y": 185,
     "neighbors": [
       "la Cerdanya",
       "el Berguedà",
@@ -375,8 +375,8 @@
   },
   {
     "name": "la Segarra",
-    "x": 0,
-    "y": 0,
+    "x": 260,
+    "y": 335,
     "neighbors": [
       "la Noguera",
       "l'Urgell",

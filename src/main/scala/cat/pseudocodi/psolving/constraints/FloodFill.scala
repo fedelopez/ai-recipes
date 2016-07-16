@@ -2,11 +2,6 @@ package cat.pseudocodi.psolving.constraints
 
 import java.awt.image.BufferedImage
 import java.awt.{Color, Point}
-import java.io.{ByteArrayOutputStream, File}
-import java.util.Date
-import java.util.concurrent.atomic.AtomicInteger
-import javax.imageio.ImageIO
-import javax.swing.{ImageIcon, JFrame, JLabel}
 
 /**
   * https://en.wikipedia.org/wiki/Flood_fill
@@ -17,30 +12,6 @@ object FloodFill {
 
   val targetColor: Int = new Color(142, 215, 176).getRGB
   val replacementColor: Int = new Color(149, 149, 149).getRGB
-
-  def main(args: Array[String]) {
-    val file: String = FloodFill.getClass.getResource("vall-daran.png").getFile
-    val bi: BufferedImage = ImageIO.read(new File(file))
-    val width: Int = bi.getWidth
-    val height: Int = bi.getHeight
-    val date: Date = new Date
-    val visited = new AtomicInteger(0)
-
-    floodFillQueue(new Point(width / 2, height / 2), bi)
-    System.out.println("time = " + (new Date().getTime - date.getTime))
-
-    val baos: ByteArrayOutputStream = new ByteArrayOutputStream
-    ImageIO.write(bi, "png", baos)
-    baos.flush
-    val imageBytes: Array[Byte] = baos.toByteArray
-    baos.close
-
-    val imageIcon: ImageIcon = new ImageIcon(imageBytes)
-    val frame = new JFrame("FloodFill")
-    frame.add(new JLabel(imageIcon))
-    frame.setVisible(true)
-    frame.pack
-  }
 
   /**
     * Flood fill using recursion
@@ -61,7 +32,7 @@ object FloodFill {
   /**
     * Flood fill using queues
     */
-  def floodFillQueue(initial: Point, bi: BufferedImage) {
+  def floodFillQueue(initial: Point, bi: BufferedImage, replacementColor: Color) {
     val q = scala.collection.mutable.Queue[Point]()
     q.enqueue(initial)
     val processed = scala.collection.mutable.Set[Point]()
@@ -70,7 +41,7 @@ object FloodFill {
       val color = bi.getRGB(p.x, p.y)
       if (color == targetColor) {
         processed.add(p)
-        bi.setRGB(p.x, p.y, replacementColor)
+        bi.setRGB(p.x, p.y, replacementColor.getRGB)
         val left: Point = new Point(p.x - 1, p.y)
         if (!processed.contains(left)) q.enqueue(left)
         val right: Point = new Point(p.x + 1, p.y)
