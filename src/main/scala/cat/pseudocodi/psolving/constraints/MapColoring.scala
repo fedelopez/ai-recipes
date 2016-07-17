@@ -1,6 +1,11 @@
 package cat.pseudocodi.psolving.constraints
 
-import java.awt.Color
+import java.awt.image.BufferedImage
+import java.awt.{Color, Point}
+import java.io.{ByteArrayOutputStream, File}
+import java.util.Date
+import javax.imageio.ImageIO
+import javax.swing.{ImageIcon, JFrame, JLabel}
 
 import cat.pseudocodi.psolving.graphs.{Graph, GraphParser, Node}
 
@@ -28,21 +33,38 @@ object MapColoring {
   val graph: Graph = GraphParser.parse(source)
 
   def backtracking(g: Graph): List[Variable] = {
-    def doIt(nodes: List[Node], visited: List[Variable]): List[Variable] = {
+    def doIt(nodes: List[Node], variables: List[Variable]): List[Variable] = {
       if (nodes.size > 0) {
         val n: Node = nodes.head
-        val neighbors: List[Node] = g.neighbors(n).filterNot(p => visited.exists(v => v.n == p))
-        val usedColors: List[Color] = visited.filter(v => g.adjacent(v.n, n)).map(v => v.color)
+        val neighbors: List[Node] = g.neighbors(n).filterNot(p => variables.exists(v => v.n == p))
+        val usedColors: List[Color] = variables.filter(v => g.adjacent(v.n, n)).map(v => v.color)
         val c: Color = Domain.colors.diff(usedColors).head
-        val v: Variable = Variable(n, c)
-        val newVars: List[Variable] = v :: visited
+        val newVars: List[Variable] = Variable(n, c) :: variables
         val remaining: List[Node] = nodes.tail.filterNot(p => neighbors.contains(p))
         doIt(neighbors ::: remaining, newVars)
       } else {
-        visited
+        variables
       }
     }
     doIt(g.nodes, List())
+  }
+
+  def main(args: Array[String]) {
+    val file: String = getClass.getResource("comarques.png").getFile
+    val bi: BufferedImage = ImageIO.read(new File(file))
+    val date: Date = new Date
+    val graph: Graph = MapColoring.graph
+    backtracking(graph).foreach(v => FloodFill.floodFillQueue(new Point(v.n.x, v.n.y), bi, v.color))
+    System.out.println("time = " + (new Date().getTime - date.getTime))
+    val baos: ByteArrayOutputStream = new ByteArrayOutputStream
+    ImageIO.write(bi, "png", baos)
+    baos.flush
+    val imageBytes: Array[Byte] = baos.toByteArray
+    baos.close
+    val frame = new JFrame("Map Coloring")
+    frame.add(new JLabel(new ImageIcon(imageBytes)))
+    frame.setVisible(true)
+    frame.pack
   }
 
 }
