@@ -34,7 +34,9 @@ object MapColoring {
 
   def backtracking(g: Graph): List[Variable] = {
     def doIt(nodes: List[Node], variables: List[Variable]): List[Variable] = {
-      if (nodes.size > 0) {
+      if (nodes.isEmpty) {
+        variables
+      } else {
         val n: Node = nodes.head
         val neighbors: List[Node] = g.neighbors(n).filterNot(p => variables.exists(v => v.n == p))
         val usedColors: List[Color] = variables.filter(v => g.adjacent(v.n, n)).map(v => v.color)
@@ -42,8 +44,6 @@ object MapColoring {
         val newVars: List[Variable] = Variable(n, c) :: variables
         val remaining: List[Node] = nodes.tail.filterNot(p => neighbors.contains(p))
         doIt(neighbors ::: remaining, newVars)
-      } else {
-        variables
       }
     }
     doIt(g.nodes, List())
