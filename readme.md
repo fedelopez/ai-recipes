@@ -2,9 +2,9 @@
 
 AI exercises based on the video lectures from Prof Patrick Henry Winston and Peter Norvig.
 
-![Breath-first example](https://raw.githubusercontent.com/fedelopez/ai-recipes/blob/master/docs/graph.png)
+![Breath-first example](https://raw.githubusercontent.com/fedelopez/ai-recipes/docs/graph.png)
 
-![Map coloring example](https://raw.githubusercontent.com/fedelopez/ai-recipes/blob/master/docs/map-coloring.png)
+![Map coloring example](https://raw.githubusercontent.com/fedelopez/ai-recipes/docs/map-coloring.png)
 
 ##todo
 
