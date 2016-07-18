@@ -11,7 +11,7 @@ AI exercises based on the video lectures from Prof Patrick Henry Winston and Pet
 
 ##Constraint Satisfaction Problems
 
-- [UC Berkeley CS188 Intro to AI](https://www.youtube.com/watch?v=d1KyYyLmGpA&index=8&list=PLUl4u3cNGP63gFHB6xb-kVBiQHYe_4hSi)
+- [UC Berkeley CS188 Intro to AI](https://youtu.be/hJ9WOiueJes)
 
 - [MIT AI Lecture 8](https://www.youtube.com/watch?v=d1KyYyLmGpA&index=8&list=PLUl4u3cNGP63gFHB6xb-kVBiQHYe_4hSi)
 
