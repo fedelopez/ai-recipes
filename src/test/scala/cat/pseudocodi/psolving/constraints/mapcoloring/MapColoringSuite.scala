@@ -1,4 +1,4 @@
-package cat.pseudocodi.psolving.constraints
+package cat.pseudocodi.psolving.constraints.mapcoloring
 
 import java.awt.Color
 
