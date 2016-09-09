@@ -17,12 +17,11 @@ object NQueens {
       val row: Int = head.length
       if (row == queens) head
       else {
-        val validColumns: Seq[Int] = Range(0, squares).filter(column => head.forall(q => !isThreatening(q, Square(row, column))))
-        val validSquares: Seq[Square] = validColumns.map(i => Square(row, i))
-        if (validColumns.isEmpty) {
+        val columns: Seq[Int] = Range(0, squares).filter(column => head.forall(q => !isThreatening(q, Square(row, column))))
+        if (columns.isEmpty) {
           doIt(paths.tail)
         } else {
-          val newPaths: List[List[Square]] = validSquares.map(sq => sq :: head).toList
+          val newPaths: List[List[Square]] = columns.map(i => Square(row, i)).map(sq => sq :: head).toList
           doIt(newPaths ::: paths.tail)
         }
       }
@@ -61,7 +60,7 @@ object NQueens {
     val squares: List[Square] = solution(8, 8)
     for (sq <- squares) {
       val queen: JLabel = new JLabel(icon)
-      queen.setBounds(sq.col * 50, sq.row * 50, icon.getIconWidth(), icon.getIconHeight());
+      queen.setBounds(sq.col * 50, sq.row * 50, icon.getIconWidth, icon.getIconHeight);
       layeredPane.add(queen, 2, squares.indexOf(sq))
     }
     frame.setContentPane(layeredPane)
