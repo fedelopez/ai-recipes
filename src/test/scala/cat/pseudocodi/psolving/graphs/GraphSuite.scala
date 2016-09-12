@@ -114,6 +114,75 @@ class GraphSuite extends FunSuite {
     }
   }
 
+  /**
+    * https://en.wikipedia.org/wiki/Breadth-first_search#/media/File:Breadth-first-tree.svg
+    */
+  test("breadthFirstSearch order traversal on a tree like structure") {
+    val n1 = Node("1", 0, 0)
+    val n2 = Node("2", 1, 0)
+    val n3 = Node("3", 2, 0)
+    val n4 = Node("4", 3, 0)
+    val n5 = Node("5", 4, 0)
+    val n6 = Node("6", 5, 0)
+    val n7 = Node("7", 6, 0)
+    val n8 = Node("8", 7, 0)
+    val n9 = Node("9", 8, 0)
+    val n10 = Node("10", 9, 0)
+    val n11 = Node("11", 10, 0)
+    val n12 = Node("12", 11, 0)
+
+    val edges: List[Edge] = List(
+      Edge(n1, n2), Edge(n1, n3), Edge(n1, n4),
+      Edge(n2, n5), Edge(n2, n6),
+      Edge(n4, n7), Edge(n4, n8),
+      Edge(n5, n9), Edge(n5, n10),
+      Edge(n7, n11), Edge(n7, n12),
+      Edge(n9, n11))
+
+    val graph: Graph = Graph(List(n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12), edges)
+    val res: List[Node] = graph.breadthFirstSearch(n1, n11)
+    assert(res.length === 4)
+    assert(res.head === n1)
+    assert(res(1) === n4)
+    assert(res(2) === n7)
+    assert(res(3) === n11)
+  }
+
+  /**
+    * https://en.wikipedia.org/wiki/Breadth-first_search#/media/File:Breadth-first-tree.svg
+    */
+  test("depthFirstSearch order traversal on a tree like structure") {
+    val n1 = Node("1", 0, 0)
+    val n2 = Node("2", 1, 0)
+    val n3 = Node("3", 2, 0)
+    val n4 = Node("4", 3, 0)
+    val n5 = Node("5", 4, 0)
+    val n6 = Node("6", 5, 0)
+    val n7 = Node("7", 6, 0)
+    val n8 = Node("8", 7, 0)
+    val n9 = Node("9", 8, 0)
+    val n10 = Node("10", 9, 0)
+    val n11 = Node("11", 10, 0)
+    val n12 = Node("12", 11, 0)
+
+    val edges: List[Edge] = List(
+      Edge(n1, n2), Edge(n1, n3), Edge(n1, n4),
+      Edge(n2, n5), Edge(n2, n6),
+      Edge(n4, n7), Edge(n4, n8),
+      Edge(n5, n9), Edge(n5, n10),
+      Edge(n7, n11), Edge(n7, n12),
+      Edge(n9, n11))
+
+    val graph: Graph = Graph(List(n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12), edges)
+    val res: List[Node] = graph.depthFirstSearch(n1, n11)
+    assert(res.length === 5)
+    assert(res.head === n1)
+    assert(res(1) === n2)
+    assert(res(2) === n5)
+    assert(res(3) === n9)
+    assert(res(4) === n11)
+  }
+
   test("depthFirstSearch: A to F when shorter path available via C is missed") {
     new TestSets {
       val g3: Graph = Graph(List(nA, nB, nC, nD, nE, nF, nG), List(Edge(nA, nH), Edge(nA, nC), Edge(nC, nB), Edge(nC, nD), Edge(nC, nF), Edge(nD, nE), Edge(nE, nF), Edge(nB, nG)))

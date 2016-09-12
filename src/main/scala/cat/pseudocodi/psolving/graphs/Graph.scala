@@ -20,18 +20,17 @@ sealed case class Graph(nodes: List[Node], edges: List[Edge]) {
     }).filter(_ != null)
   }
 
-  def graphSearch(from: Node, goal: Node, f: List[List[Node]] => List[Node]): List[Node] = {
+  def graphSearch(from: Node, goal: Node, f: (List[List[Node]], List[List[Node]]) => List[List[Node]]): List[Node] = {
     def doIt(visited: List[Node], frontier: List[List[Node]]): List[Node] = {
       if (frontier.isEmpty) throw new IllegalStateException("No solution: empty frontier")
       else {
-        val path: List[Node] = f(frontier)
+        val path: List[Node] = frontier.head
         val lastNode: Node = path.reverse.head
         if (lastNode == goal) path
         else {
           val actions: List[Node] = neighbors(lastNode).filterNot((node: Node) => visited.contains(node))
           val paths: List[List[Node]] = actions.map((action: Node) => path ::: List(action))
-          val newFrontier: List[List[Node]] = frontier.filterNot((nodes: List[Node]) => nodes == path) ::: paths
-          doIt(lastNode :: visited, newFrontier)
+          doIt(lastNode :: visited, f(frontier.tail, paths))
         }
       }
     }
@@ -39,10 +38,10 @@ sealed case class Graph(nodes: List[Node], edges: List[Edge]) {
   }
 
   def breadthFirstSearch(from: Node, goal: Node): List[Node] =
-    graphSearch(from, goal, (list: List[List[Node]]) => list.head)
+    graphSearch(from, goal, (frontier: List[List[Node]], paths: List[List[Node]]) => frontier ::: paths)
 
   def depthFirstSearch(from: Node, goal: Node): List[Node] =
-    graphSearch(from, goal, (paths: List[List[Node]]) => paths.reduceLeft((p1, p2) => if (p1.size >= p2.size) p1 else p2))
+    graphSearch(from, goal, (frontier: List[List[Node]], paths: List[List[Node]]) => paths ::: frontier)
 
 }
 
