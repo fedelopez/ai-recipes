@@ -60,11 +60,11 @@ object NQueens {
     val squares: List[Square] = solution(8, 8)
     for (sq <- squares) {
       val queen: JLabel = new JLabel(icon)
-      queen.setBounds(sq.col * 50, sq.row * 50, icon.getIconWidth, icon.getIconHeight);
+      queen.setBounds(sq.col * 50, sq.row * 50, icon.getIconWidth, icon.getIconHeight)
       layeredPane.add(queen, 2, squares.indexOf(sq))
     }
     frame.setContentPane(layeredPane)
     frame.setVisible(true)
-    frame.pack
+    frame.pack()
   }
 }
