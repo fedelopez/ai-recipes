@@ -1,15 +1,14 @@
-#AI Recipes
+# AI Recipes
 
 AI exercises based on the video lectures from Prof Patrick Henry Winston and Peter Norvig.
 
-##Searching
+## Searching
 
 - [Udacity Intro to Artificial Intelligence](https://www.youtube.com/watch?v=c0PfWsqtfdo)
 
 ![Breath-first example](https://github.com/fedelopez/ai-recipes/blob/master/docs/graph.png)
 
-
-##Constraint Satisfaction Problems
+## Constraint Satisfaction Problems
 
 - [UC Berkeley CS188 Intro to AI](https://youtu.be/hJ9WOiueJes)
 
@@ -17,7 +16,7 @@ AI exercises based on the video lectures from Prof Patrick Henry Winston and Pet
 
 ![Map coloring](https://github.com/fedelopez/ai-recipes/blob/master/docs/map-coloring.png)
 
-##todo
+## todo
 
 - Choose search algorithm from GUI
 - Uniform-Cost Search (expand the path with the lowest total cost)
