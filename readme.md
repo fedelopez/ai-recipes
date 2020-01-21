@@ -10,7 +10,7 @@ AI exercises based on the video lectures from Prof Patrick Henry Winston and Pet
 
 ## Constraint Satisfaction Problems
 
-### Map coloring
+### Eigth queens
 
 ![Eight queens](https://github.com/fedelopez/ai-recipes/blob/master/docs/eight-queens.png)
 
