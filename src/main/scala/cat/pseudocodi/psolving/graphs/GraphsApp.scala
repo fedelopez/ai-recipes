@@ -11,7 +11,7 @@ import scala.swing.event.MouseClicked
   */
 object GraphsApp extends SimpleSwingApplication {
 
-  val source = Source.fromFile(getClass.getResource("layout.json").getFile).mkString
+  val source: String = Source.fromInputStream(getClass.getResourceAsStream("layout.json")).mkString
   val graph: Graph = GraphParser.parse(source)
 
   val frameWidth = 700
@@ -25,13 +25,13 @@ object GraphsApp extends SimpleSwingApplication {
   val selectedNodes: scala.collection.mutable.ArrayBuffer[Node] = new scala.collection.mutable.ArrayBuffer[Node]()
   val path: scala.collection.mutable.ArrayBuffer[Node] = new scala.collection.mutable.ArrayBuffer[Node]()
 
-  def top = new MainFrame {
+  def top: MainFrame = new MainFrame {
     title = "Problem Solving: finding paths"
     preferredSize = new Dimension(frameWidth, frameHeight)
 
     contents = new Panel {
 
-      override def paintComponent(g: Graphics2D) = {
+      override def paintComponent(g: Graphics2D): Unit = {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON)
         g.setColor(Color.darkGray)
 
@@ -54,7 +54,7 @@ object GraphsApp extends SimpleSwingApplication {
             }
             if (selectedNodes.size == 2) {
               path.clear()
-              path.appendAll(graph.depthFirstSearch(selectedNodes.head, selectedNodes.last))
+              path.appendAll(graph.breadthFirstSearch(selectedNodes.head, selectedNodes.last))
             }
             repaint()
           }
@@ -62,7 +62,7 @@ object GraphsApp extends SimpleSwingApplication {
     }
   }
 
-  def drawNode(n: Node, g: Graphics2D) = {
+  def drawNode(n: Node, g: Graphics2D): Unit = {
     if (selectedNodes.contains(n)) g.setColor(blue)
     else g.setColor(Color.lightGray)
 
@@ -83,7 +83,7 @@ object GraphsApp extends SimpleSwingApplication {
     g.drawString(n.name, (rect.x + rect.width / 2) - (width / 2), rect.y - 10)
   }
 
-  def drawEdge(e: Edge, g: Graphics2D) = {
+  def drawEdge(e: Edge, g: Graphics2D): Unit = {
     val xs: Int = frameWidth / 7
     val nodeA_x: Int = e.nodeA.x * xs + 50
     val nodeA_y: Int = (e.nodeA.y * xs) + (xs + xs / 4) / 2

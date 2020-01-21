@@ -2,6 +2,7 @@ package cat.pseudocodi.psolving.constraints.nqueens
 
 import java.awt.{Color, Dimension}
 import java.net.URL
+
 import javax.swing._
 
 /**
@@ -12,6 +13,7 @@ object NQueens {
   case class Square(row: Int, col: Int)
 
   def solution(queens: Int, squares: Int): List[Square] = {
+    @scala.annotation.tailrec
     def doIt(paths: List[List[Square]]): List[Square] = {
       val head: List[Square] = paths.head
       val row: Int = head.length

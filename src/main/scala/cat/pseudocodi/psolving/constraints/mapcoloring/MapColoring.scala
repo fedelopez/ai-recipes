@@ -2,12 +2,12 @@ package cat.pseudocodi.psolving.constraints.mapcoloring
 
 import java.awt.image.BufferedImage
 import java.awt.{Color, Point}
-import java.io.{ByteArrayOutputStream, File}
+import java.io.{ByteArrayOutputStream, InputStream}
 import java.util.Date
-import javax.imageio.ImageIO
-import javax.swing.{ImageIcon, JFrame, JLabel}
 
 import cat.pseudocodi.psolving.graphs.{Graph, GraphParser, Node}
+import javax.imageio.ImageIO
+import javax.swing.{ImageIcon, JFrame, JLabel}
 
 import scala.io.Source
 
@@ -29,10 +29,11 @@ object Domain {
 
 object MapColoring {
 
-  val source = Source.fromFile(getClass.getResource("comarques.json").getFile).mkString
+  val source: String = Source.fromInputStream(getClass.getResourceAsStream("comarques.json")).mkString
   val graph: Graph = GraphParser.parse(source)
 
   def backtracking(g: Graph): List[Variable] = {
+    @scala.annotation.tailrec
     def doIt(nodes: List[Node], variables: List[Variable]): List[Variable] = {
       if (nodes.isEmpty) {
         variables
@@ -50,8 +51,8 @@ object MapColoring {
   }
 
   def main(args: Array[String]) {
-    val file: String = getClass.getResource("comarques.png").getFile
-    val bi: BufferedImage = ImageIO.read(new File(file))
+    val inputStream: InputStream = getClass.getResourceAsStream("comarques.png")
+    val bi: BufferedImage = ImageIO.read(inputStream)
     val date: Date = new Date
     val graph: Graph = MapColoring.graph
     backtracking(graph).foreach(v => FloodFill.floodFillQueue(new Point(v.n.x, v.n.y), bi, v.color))

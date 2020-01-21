@@ -21,6 +21,7 @@ sealed case class Graph(nodes: List[Node], edges: List[Edge]) {
   }
 
   def graphSearch(from: Node, goal: Node, f: (List[List[Node]], List[List[Node]]) => List[List[Node]]): List[Node] = {
+    @scala.annotation.tailrec
     def doIt(visited: List[Node], frontier: List[List[Node]]): List[Node] = {
       if (frontier.isEmpty) throw new IllegalStateException("No solution: empty frontier")
       else {
@@ -48,6 +49,7 @@ sealed case class Graph(nodes: List[Node], edges: List[Edge]) {
 object Graph {
 
   def removeDuplicates(edges: List[Edge]): List[Edge] = {
+    @scala.annotation.tailrec
     def doIt(edges: List[Edge], acc: List[Edge]): List[Edge] = {
       if (edges.isEmpty) acc
       else {
